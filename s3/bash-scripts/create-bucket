@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
+echo "== creat4e bucket"
 
 if [ -z "$1" ]; then
-  echo "there needs to be a bucket name  eg. ./bucket my-bucket-name"
+  echo "There needs to be a bucket name. Example usage: ./bucket my-bucket-name"
   exit 1
 fi
 
 BUCKET_NAME=$1
+REGION="ca-central-1"
 
-#https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
 aws s3api create-bucket \
---bucket $BUCKET_NAME \
---create-bucket-configuration="locationConstraint=ca-central-1"
-
+  --bucket "$BUCKET_NAME" \
+  --region "$REGION" \
+  --create-bucket-configuration LocationConstraint="$REGION"

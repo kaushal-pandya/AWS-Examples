@@ -13,7 +13,7 @@ fi
 
 #check for file name prefix
 if [ -z "$2" ]; then
-  echo "There needs to be a bucket name. Example usage: ./bucket my-bucket-name"
+  echo "There needs to be a file name prefix. Example usage: ./bucket my-bucket-name my-prefix"
   exit 1
 fi
 
@@ -33,7 +33,7 @@ NUM_FILES=$((RANDOM % 6 + 5))
 
 for ((i=1; i<=$NUM_FILES; i++)); do
     # Generate a random filename
-    FILENAME="$OUTPUT_DIR/FILENAME_PREFIX_$i.txt"
+    FILENAME="$OUTPUT_DIR/${FILENAME_PREFIX}_$i.txt"
 
     # Generate random data and write it to the file
     dd if=/dev/urandom of="$FILENAME" bs=1024 count=$((RANDOM % 1024 + 1)) 2>/dev/null
@@ -41,4 +41,4 @@ done
 
 tree $OUTPUT_DIR
 
-aws s3 sync $OUTPUT_DIR se://$BUCKET_NAME/files
+aws s3 sync $OUTPUT_DIR s3://$BUCKET_NAME/files

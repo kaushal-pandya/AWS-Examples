@@ -1,0 +1,19 @@
+{
+  "Grants": [
+    {
+      "Grantee": {
+        "DisplayName": "string",
+        "EmailAddress": "string",
+        "ID": "string",
+        "Type": "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
+        "URI": "string"
+      },
+      "Permission": "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+    }
+    ...
+  ],
+  "Owner": {
+    "DisplayName": "string",
+    "ID": "string"
+  }
+}
